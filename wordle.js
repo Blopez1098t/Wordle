@@ -58,11 +58,22 @@ document.addEventListener('keyup', (e) => {
 function update(){
     let correct = 0;
     for (let c = 0; c < width; c++){
-        let cuurentTile = document.getElementById(row.toString() + '-' + col.toString());
+        let currentTile = document.getElementById(row.toString() + '-' + c);
         let letter = currentTile.innerText
 
         if (word[c] == letter){
-            currentTile.classList
+            currentTile.classList.add("correct");
+            correct++;
         }
+        else if (word.includes(letter)){
+            currentTile.classList.add("present");
+        }
+        else {
+            currentTile.classList.add("absent");
+        }
+        if (correct == width) {
+            gameOver = true;
+        }
+
     }
 }
